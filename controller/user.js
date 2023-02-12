@@ -16,11 +16,16 @@ connection.connect(function(err, connection){
 });
 
 exports.signUp = (req, res, next) => {
-    const data = req.body;
-    const sql = `INSERT INTO data (info) VALUES ('${JSON.stringify(data)}')`;
+    console.log(req.body)
+    const password = JSON.stringify(req.body.password);
+    const name = JSON.stringify(req.body.name);
+    const last_name = JSON.stringify(req.body.last_name);
+    const email = JSON.stringify(req.body.email);
+    const sql = `INSERT INTO user(password, name, last_name,email) VALUES (${password}, ${name}, ${last_name}, ${email}) `;
     connection.query(sql, (error, result) => {
-      if (error) throw error;
-      res.json({ message: 'Data added successfully.' });
+
+        if (error) return res.status(500).json({error: error});
+        else res.status(200).json({ message: 'Data added successfully.' });
     });
 }
 
