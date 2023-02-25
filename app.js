@@ -3,11 +3,10 @@ const mysql = require("mysql");
 const routeUser = require("./route/user");
 const routeApp = require("./route/app");
 
+
 const app = express();
 
-
 app.use(express.json());
-
 
 const connection = mysql.createConnection({
     host: 'localhost',

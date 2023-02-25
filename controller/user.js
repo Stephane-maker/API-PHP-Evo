@@ -1,19 +1,6 @@
-const mysql = require("mysql");
-const Jwt = require('jsonwebtoken');
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '753159852456',
-    database: 'evo',
-});
 
-connection.connect(function(err, connection){
-    if (connection) {
-        console.log("Connected at Mysql Server");
-    }else{
-        console.log("Couldn't connect : to Mysql server" );
-    }
-});
+const Jwt = require('jsonwebtoken');
+const connection = require('../middelware/connection_mysql');
 
 exports.signUp = (req, res, next) => {
     console.log(req.body)
